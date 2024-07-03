@@ -1,13 +1,12 @@
-GraphHud @ graphHud;
+GearVisualizer @ gearVisualizer;
 float g_dt = 0;
 float HALF_PI = 1.57079632679;
-string surface_override = "";
 
 
 void Update(float dt) {
-  g_dt = dt;
+  g_dt = dt; 
 
-  if (graphHud!is null) {
+  if (gearVisualizer!is null) {
     auto app = GetApp();
     if (Setting_General_HideWhenNotPlaying) {
       if (app.CurrentPlayground!is null && (app.CurrentPlayground.UIConfigs.Length > 0)) {
@@ -20,11 +19,11 @@ void Update(float dt) {
     if (app!is null && app.GameScene!is null) {
       CSceneVehicleVis @[] allStates = VehicleState::GetAllVis(app.GameScene);
       if (UseCurrentlyViewedPlayer) {
-        graphHud.update(VehicleState::ViewingPlayerState());
+        gearVisualizer.update(VehicleState::ViewingPlayerState());
       }
       if (allStates.Length > 0) {
         if (!UseCurrentlyViewedPlayer && (player_index < 0 || (allStates!is null && allStates.Length > player_index))) {
-          graphHud.update(allStates[player_index].AsyncState);
+          gearVisualizer.update(allStates[player_index].AsyncState);
         }
       }
     }
@@ -49,7 +48,7 @@ void Render() {
     return;
   }
 
-  if (graphHud!is null) {
+  if (gearVisualizer!is null) {
     auto app = GetApp();
     if (Setting_General_HideWhenNotPlaying) {
       if (app.CurrentPlayground!is null && (app.CurrentPlayground.UIConfigs.Length > 0)) {
@@ -61,12 +60,12 @@ void Render() {
 
     if (app!is null && app.GameScene!is null) {
       if (UseCurrentlyViewedPlayer) {
-        graphHud.Render(VehicleState::ViewingPlayerState());
+        gearVisualizer.Render(VehicleState::ViewingPlayerState());
       } else {
         CSceneVehicleVis @[] allStates = VehicleState::GetAllVis(app.GameScene);
         if (allStates.Length > 0) {
           if (player_index < 0 || (allStates!is null && allStates.Length > player_index)) {
-            graphHud.Render(allStates[player_index].AsyncState);
+            gearVisualizer.Render(allStates[player_index].AsyncState);
           } else {
             UI::SetNextWindowContentSize(400, 150);
             UI::Begin("\\$f33Invalid player index!");
@@ -81,9 +80,8 @@ void Render() {
 }
 
 void Main() {
-  @graphHud = GraphHud();
+  @gearVisualizer = GearVisualizer();
 }
 
 void OnSettingsChanged() {
-  graphHud.onSettingsChange();
 }
