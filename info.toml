@@ -1,0 +1,9 @@
+[meta]
+name = "Silent Gear Guide"
+author = "sgt_bigbird"
+category = "Overlay"
+version = "0.2.0"
+
+[script]
+dependencies = [ "VehicleState", "Camera" ]
+timeout = 0
