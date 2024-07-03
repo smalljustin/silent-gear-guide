@@ -31,7 +31,6 @@ class GearVisualizer {
         curEngineRpm = VehicleState::GetRPM(visState);
 
         if (curGear != prevGear) {
-            print("GEAR CHANGE");
             duringGearChange = true;
             timeoutIdx = ARR_LENGTH;
         }
@@ -51,7 +50,7 @@ class GearVisualizer {
             if (duringGearChange) {
                 bool increasing = true;
                 float prevRpm, curRpm, prevVel, curVel;
-                print("START - 49");
+                // print("START - 49");
                 for (int i = 0; i < (ARR_LENGTH - 1); i++) {
                     int curIdx = (idx + ARR_LENGTH - i) % ARR_LENGTH;
                     int prevIdx = (idx + ARR_LENGTH - (i + 1)) % ARR_LENGTH;
@@ -69,14 +68,14 @@ class GearVisualizer {
                         increasing = false;
                     }
 
-                    print(tostring(curIdx) + "\t" + tostring(prevIdx));
-                    print(tostring(curRpm) + "\t" + tostring(prevRpm));
-                    print(tostring(curVel) + "\t" + tostring(prevVel));
-                    print(tostring(totalDiff) + "\t" + tostring(rpmDiff) + "\t" + tostring(velDiff));
+                    // print(tostring(curIdx) + "\t" + tostring(prevIdx));
+                    // print(tostring(curRpm) + "\t" + tostring(prevRpm));
+                    // print(tostring(curVel) + "\t" + tostring(prevVel));
+                    // print(tostring(totalDiff) + "\t" + tostring(rpmDiff) + "\t" + tostring(velDiff));
                 }
                 if (increasing) {
                     duringGearChange = false;
-                    print("gear change over; both velocity and rpm increasing");
+                    // print("gear change over; both velocity and rpm increasing");
                 }
             }
         }
