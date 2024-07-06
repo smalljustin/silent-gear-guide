@@ -9,7 +9,7 @@ bool UseCurrentlyViewedPlayer = true;
 [Setting category="Player View" name="Player index to grab" drag min=0 max=100]
 int player_index = 0;
 
-[Setting category="Display config" name="Always show? (If false, hide in fast gear 5)"]
+[Setting category="Display config" name="Always show? (Otherwise, hide when driving very fast in gear 5)"]
 bool ALWAYS_SHOW = false;
 
 [Setting category="Display config" name="Always show on left side"]
