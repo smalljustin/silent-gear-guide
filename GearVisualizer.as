@@ -103,6 +103,9 @@ class GearVisualizer {
         startPoint += visState.Up * CAR_Z_OFFSET;
         endPoint += visState.Up * CAR_Z_OFFSET;
 
+        vec3 cameraDist = startPoint - Camera::GetCurrentPosition();
+        float rendered_width = LINE_WIDTH / cameraDist.Length();
+
         if (Camera::IsBehind(startPoint) || Camera::IsBehind(endPoint)) {
             return;
         }
@@ -110,7 +113,7 @@ class GearVisualizer {
         nvg::BeginPath();
         nvg::MoveTo(Camera::ToScreenSpace(startPoint));
         nvg::LineTo(Camera::ToScreenSpace(endPoint));
-        nvg::StrokeWidth(5);
+        nvg::StrokeWidth(rendered_width);
         nvg::StrokeColor(ApplyOpacityToColor(BASE_COLOR, calculatedOpacity));
         nvg::Stroke();
         nvg::ClosePath();
@@ -130,7 +133,7 @@ class GearVisualizer {
         nvg::BeginPath();
         nvg::MoveTo(Camera::ToScreenSpace(startPoint));
         nvg::LineTo(Camera::ToScreenSpace(gearIndicatorEndPoint));
-        nvg::StrokeWidth(5);
+        nvg::StrokeWidth(rendered_width);
         nvg::StrokeColor(ApplyOpacityToColor(finalColor, calculatedOpacity));
         nvg::Stroke();
         nvg::ClosePath();

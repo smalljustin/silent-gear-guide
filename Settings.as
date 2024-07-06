@@ -12,6 +12,9 @@ int player_index = 0;
 [Setting category="Display config" name="Always show? (Otherwise, hide when driving very fast in gear 5)"]
 bool ALWAYS_SHOW = false;
 
+[Setting category="Display config" name="Rendered Line Width" drag min=1 max=100]
+float LINE_WIDTH = 20;
+
 [Setting category="Display config" name="Always show on left side"]
 bool SIDE_LEFT = true;
 
@@ -37,13 +40,13 @@ float LINE_LENGTH = 3;
 float CAR_Z_OFFSET = 0.1;
 
 [Setting category="Colors" name="Base color" color]
-vec4 BASE_COLOR = vec4(255, 255, 255, 255) / 255;
+vec4 BASE_COLOR = vec4(1, 1, 1, 1);
 
 [Setting category="Colors" name="RPM Indicator Color" color]
-vec4 GEAR_COLOR = vec4(35, 100, 183, 255) / 255;
+vec4 GEAR_COLOR = vec4(0, 1, 0, 1);
 
 [Setting category="Colors" name="Gear Change Color" color]
-vec4 WARN_COLOR = vec4(255, 85, 48, 255) / 255; 
+vec4 WARN_COLOR = vec4(1, 0, 0, 1);
 
 [Setting category="Colors" name="Color rate of change" drag min=0.001 max=0.1]
 float COLOR_DX = 0.01;
